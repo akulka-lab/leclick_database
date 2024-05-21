@@ -1,0 +1,52 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "rgEpmAba7_W5"
+      },
+      "outputs": [],
+      "source": [
+        "import csv\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "\n",
+        "file_path = 'application.txt'\n",
+        "with open(file_path, 'r') as file:\n",
+        "    data = file.readlines()\n",
+        "\n",
+        "# Обработка данных\n",
+        "labels = []\n",
+        "sizes = []\n",
+        "for line in data:\n",
+        "    label, size = line.strip().split(',')\n",
+        "    labels.append(label)\n",
+        "    sizes.append(int(size))\n",
+        "\n",
+        "# Построение круговой диаграммы\n",
+        "colors = ['lightblue', 'lightcoral']\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)\n",
+        "plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.\n",
+        "plt.title('Распределение статусов')\n",
+        "\n",
+        "plt.show()"
+      ]
+    }
+  ]
+}
